@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Follow-up - May 28, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f4f0;padding:20px;color:#1a1a18}
+.container{max-width:820px;margin:0 auto}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+h1{font-size:20px;font-weight:700;margin-bottom:3px}
+.date{font-size:12px;color:#888}
+.prog-row{display:flex;align-items:center;gap:10px;min-width:200px}
+.prog-bar{flex:1;height:6px;background:#ddd;border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;background:#1D9E75;border-radius:99px;transition:width .3s;width:0%}
+.prog-txt{font-size:12px;color:#555;white-space:nowrap;min-width:80px;text-align:right}
+.project{background:#fff;border:1px solid #ddd;border-radius:10px;margin-bottom:10px;overflow:hidden;page-break-inside:avoid}
+.ph{display:flex;align-items:center;gap:8px;padding:11px 15px;background:#f8f8f6;border-bottom:1px solid #eee;cursor:pointer;user-select:none}
+.ph:hover{background:#f0efeb}
+.pi{width:28px;height:28px;border-radius:6px;background:#e4e3de;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#555;flex-shrink:0}
+.pname{font-size:13px;font-weight:700;flex:1;color:#1a1a18}
+.cnt{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600;background:#eee;color:#666;border:1px solid #ddd}
+.cnt.all{background:#d4edda;color:#155724;border-color:#b8dfc3}
+.cnt.some{background:#fff3cd;color:#856404;border-color:#ffc107}
+.iw{padding:4px 15px 10px}
+.item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0efe8}
+.item:last-child{border-bottom:none}
+.cb{width:18px;height:18px;min-width:18px;border:2px solid #bbb;border-radius:4px;margin-top:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;transition:all .15s;cursor:pointer}
+.cb.on{background:#1D9E75;border-color:#1D9E75}
+.cb.on::after{content:'';display:block;width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(45deg) translate(-1px,-1px)}
+.ib{flex:1;min-width:0}
+.it{font-size:13px;color:#1a1a18;line-height:1.5;cursor:pointer}
+.it.done{text-decoration:line-through;color:#aaa}
+.meta{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;align-items:center}
+.tag{font-size:11px;padding:1px 8px;border-radius:99px;white-space:nowrap;border:1px solid #ddd;background:#f4f4f0;color:#666}
+.tag.who{background:#e8eaf6;color:#3949ab;border-color:#c5cae9}
+.tag.dc{background:#d4edda;color:#155724;border-color:#b8dfc3;font-weight:600}
+.tag.dopen{background:#fff3cd;color:#856404;border-color:#ffc107;font-weight:600}
+.tag.dclose{background:#d4edda;color:#155724;border-color:#b8dfc3;font-weight:600}
+.note-show{font-size:11px;padding:3px 10px;border-radius:4px;background:#fff8e1;color:#5d4037;border:1px solid #ffe082;margin-top:4px;display:inline-block;cursor:pointer;max-width:100%;word-break:break-word}
+.note-show:hover{background:#fff3cd}
+.note-edit{width:100%;margin-top:5px;padding:6px 8px;font-size:12px;border:1.5px solid #1D9E75;border-radius:6px;font-family:Arial,sans-serif;resize:vertical;outline:none;background:#fffef5;color:#1a1a18;min-height:50px}
+.add-note{font-size:11px;color:#1D9E75;background:none;border:1px dashed #1D9E75;border-radius:4px;padding:2px 9px;cursor:pointer;margin-top:4px;display:inline-block}
+.add-note:hover{background:#f0faf6}
+.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:Arial,sans-serif;font-size:13px;font-weight:600;padding:9px 18px;border-radius:8px;border:1px solid #ccc;background:#fff;color:#333;cursor:pointer}
+.btn:hover{background:#eee}
+.btn.primary{background:#1a1a18;color:#fff;border-color:#1a1a18}
+.btn.primary:hover{background:#333}
+.btn.green{background:#1D9E75;color:#fff;border-color:#1D9E75}
+.btn.green:hover{background:#178a65}
+.savebar{font-size:11px;color:#999;text-align:right;margin-top:6px;height:16px}
+@media print{
+  body{background:#fff;padding:5px}
+  .actions,.savebar,.add-note{display:none!important}
+  .note-edit{display:none!important}
+  .iw{display:block!important}
+  .note-show{background:#fff8e1!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div>
+      <h1>&#128203; Project Follow-up</h1>
+      <div class="date" id="lbl-date">May 28, 2026</div>
+    </div>
+    <div class="prog-row">
+      <div class="prog-bar"><div class="prog-fill" id="pf"></div></div>
+      <div class="prog-txt" id="pl">0 / 0 done</div>
+    </div>
+  </div>
+  <div id="proj"></div>
+  <div class="actions">
+    <button class="btn" onclick="resetAll()">&#8635; Reset all</button>
+    <button class="btn green" onclick="window.print()">&#128438; Print</button>
+    <button class="btn primary" id="copybtn" onclick="copyText()">&#10064; Copy as text</button>
+  </div>
+  <div class="savebar" id="savebar"></div>
+</div>
+<script>
+var data = [
+{"name":"Jus Dose","items":[
+  {"t":"Receive missing dumper manual from Dan V.","who":"Dan V.","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Send all manuals to customer","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Prepare combined delivery: Eagle Eye, lexan sheets for top cover, parts for under labeler, stickers for labeler, floor bumper behind bin","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Send a technician to assemble and install parts","who":"Service","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"S ski frame ready (goes under the printers)","who":"","done":false,"da":"2026-05-27","dc":"","notes":""},
+  {"t":"Dumper frame assembly top cover: cover assembled for test at Capmatic, then disassembled for shipment, to be reassembled on site by technician","who":"","done":false,"da":"2026-05-27","dc":"","notes":""},
+  {"t":"Delivery: include Eagle Eye with ski frame and dumper cover","who":"","done":false,"da":"2026-05-27","dc":"","notes":""},
+  {"t":"Add printed manuals to delivery — box to the attention of Sebastien","who":"Sebastien","done":false,"da":"2026-05-27","dc":"","notes":""}
+]},
+{"name":"Idexx","items":[
+  {"t":"Reassemble anodized parts and verify fitting","who":"Manfred","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Dismantle machine — catalog by video/photos","who":"Remi/Laslo","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Crate machine","who":"Nelson","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Get spare parts PO acceptance","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Receive full payment on open invoices","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Ship machine","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Send manual to customer","who":"","done":false,"da":"2026-05-15","dc":"","notes":""}
+]},
+{"name":"Kirker","items":[
+  {"t":"Determine lockdown method for nine removal torque","who":"Dan V.","done":false,"da":"2026-05-15","dc":"","notes":"New gripper successful, produce 2nd one"},
+  {"t":"Advise customer on method and timeline","who":"Mike","done":true,"da":"2026-05-15","dc":"2026-05-21","notes":""},
+  {"t":"New timeline gripper to be fabricated 5 days","who":"Dan V.","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"New timeline test gripper and call FAT approx 1st week of June","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"Dismantle machine","who":"Leslie","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Crate machine","who":"Nelson","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Ship machine","who":"Mike","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Send manual to customer","who":"Doc team","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Seal on the fixed panels","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Silencer cover to adjust","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Labeller electrical","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"More strips for door windows","who":"","done":false,"da":"2026-05-28","dc":"","notes":"Moved from Clutch/Carpe"}
+]},
+{"name":"SC Johnson","items":[
+  {"t":"Await customer payment — shipping fee still open","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Dismantle crate and ship","who":"","done":false,"da":"2026-05-15","dc":"","notes":"Crate Tuesday 26th"},
+  {"t":"Send manual to customer","who":"Doc team","done":false,"da":"2026-05-15","dc":"","notes":""}
+]},
+{"name":"KABS","items":[
+  {"t":"Commissioning ongoing (started May 13)","who":"Manfred","done":false,"da":"2026-05-13","dc":"","notes":""},
+  {"t":"Bambinostar complete — schedule technician visit. Two cabs, assign to Simon.","who":"Simon","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Two cabs, no pedestal feeders required. Progress closed.","who":"","done":true,"da":"2026-05-15","dc":"2026-05-21","notes":""},
+  {"t":"Bambinostar — Simon service to Jus Dose","who":"Simon","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Roboflex and Bandstar 2 weeks electric","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"All change parts still open","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Jean-Simon left with the video jet","who":"Jean-Simon","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Yanbal","items":[
+  {"t":"Receive new round bottle sample from customer (replacing square)","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Frames on the floor","who":"","done":true,"da":"2026-05-15","dc":"2026-05-21","notes":""},
+  {"t":"Both machines in assembly, depucker at kitting","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Accurofil and Alpha in assembly","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Depucker to be done this week","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Euroguard and filling parts missing on the Accurofil","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Alpha: carts","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Clutch / Carpe","items":[
+  {"t":"First Sortstar: complete and ready","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
+  {"t":"Change A3577 to A3103 and update serial number — email sent to Antonio and Rachel","who":"Antonio, Rachel","done":true,"da":"2026-05-19","dc":"2026-05-20","notes":""},
+  {"t":"Sortstar 2 testing complete","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""},
+  {"t":"Doc complete","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""},
+  {"t":"Both machines tested — dial in optimal speed: target 95 BPM (range 80–100 BPM)","who":"Rob F.","done":false,"da":"2026-05-28","dc":"","notes":"Both machines need conveyors in place and outfeed sensor hooked up before Rob F. can dial in speed"},
+  {"t":"Both machines: install conveyors and hook up outfeed sensor","who":"","done":false,"da":"2026-05-28","dc":"","notes":"Required before speed dialing"},
+  {"t":"Machine #2: install missing lexan bin door","who":"Remi","done":false,"da":"2026-05-28","dc":"","notes":""},
+  {"t":"Machine #2: remove all plastic","who":"","done":false,"da":"2026-05-28","dc":"","notes":""},
+  {"t":"Both machines: wipe down","who":"","done":false,"da":"2026-05-28","dc":"","notes":""},
+  {"t":"Second Sortstar: mechanically verified — schedule technician run","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Schedule FAT (possibly video)","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Order crates","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"First machine: remove all wiring to match second machine","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"First machine: fix air switch to match second machine","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"Second machine: remove all show items (inverter, machine drive)","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"Put program in second machine","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"Dress it up","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Call customer to confirm: FAT in person, video, or none","who":"Customer","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"MG America / Ardena","items":[
+  {"t":"Fast Track target: June","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Modify mini fighter plus already in clean room","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Await customer clarification on conveyor length & drawing accuracy","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Schedule pre-kickoff or kickoff (without samples)","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"GOA: complete","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
+  {"t":"Buy the Jolly from Italy — confirmed by Loris","who":"Loris","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Send KC new layout — put Jolly BOM without chuck and bottle clamp","who":"KC","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Take the Mini Fighter Plus from the clean room","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Xeolas","items":[
+  {"t":"Pre-FAT executed on both machines — paperwork signed","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
+  {"t":"FAT ready on CF2P filler","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
+  {"t":"FAT pending — change parts on Mini Joly","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Await customer decision: attend FAT in Montreal or video","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Turntable to wire up (electrical)","who":"","done":true,"da":"2026-05-21","dc":"2026-05-21","notes":""},
+  {"t":"Ready and waiting for customer to decide: FAT in person or video","who":"Customer","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Shibuya","items":[
+  {"t":"Machine never arrived from dock","who":"","done":false,"da":"2026-05-26","dc":"","notes":"Still not arrived"},
+  {"t":"No docs received — not electrical either","who":"","done":false,"da":"2026-05-26","dc":"","notes":"No electric, no docs"},
+  {"t":"Screenshots not received","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Electrical and pneumatic drawings not received","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Machine manual not received","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Roche","items":[
+  {"t":"Recheck system — advancing too slowly","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"Push to accelerate parts production","who":"Dan/Angelo","done":false,"da":"2026-05-21","dc":"","notes":""},
+  {"t":"Loris wants SF1 mods CMP4545","who":"Loris","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Most parts will be outsourced — laser and 2 turntables","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Decide: test scan wear with new or old electrical?","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"New screen received (to JB)","who":"JB","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Buying new electrical box this week","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Electrical not getting to the machine until July","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"More change parts to be issued","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Galenova","items":[
+  {"t":"Line in position on the floor","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Belstar differential missing","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Belstar electrical box to modify","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Labeller minor things to take care of","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"A3270 tight fit","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
+  {"t":"Electrical to start today on the Cleanstar","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Paul wants to pre-FAT the Sortstar and the Cleanstar","who":"Paul","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Patriot electrical to start in 2-3 weeks","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Mechanical parts need to be removed for electrics to pass (Patriot)","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Full of interference — pneumatics and mechanical (Patriot)","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Asemaq","items":[
+  {"t":"Set up for demo today","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Sensor to install, then B1 B2","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Check if B4 are in the crates","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Sarstedt","items":[
+  {"t":"Marco cap feeder bowl missing","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Feeder bowl does not reach required speed","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Liner done — pedestal feeder reworked and reinstalled","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""}
+]},
+{"name":"Austranna","items":[
+  {"t":"Kitting done — missing 13 pcs","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Resource dependent — no techs yet","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Need visual documentation","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Diamond Health","items":[
+  {"t":"Use A3479 (not A3333) — soldier in front of Dan's office","who":"","done":false,"da":"2026-05-26","dc":"","notes":"Use A3479 only"},
+  {"t":"Backplate is complete","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""},
+  {"t":"Missing parts list is 1 year old — needs update","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Purdue","items":[
+  {"t":"To be returned from the show","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Install Scanware from Roche","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"ETA by Declan on return","who":"Declan","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Hatch","items":[
+  {"t":"In design","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]},
+{"name":"Labomar","items":[
+  {"t":"A3504 same as A3523 — Fillab after Labomar cleanup","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
+  {"t":"Make Fillab after Labomar is cleaned up","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
+]}
+];
+
+var STORE = "pf_v5";
+
+function todayStr() {
+  var d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+function daysBetween(d1, d2) {
+  try {
+    if (!d1) return null;
+    var a = new Date(d1), b = d2 ? new Date(d2) : new Date();
+    var n = Math.round((b - a) / 86400000);
+    return n >= 0 ? n : 0;
+  } catch(e) { return null; }
+}
+function initials(n) {
+  return n.split(/[\s\/\-]+/).map(function(w){ return w[0] || ""; }).join("").toUpperCase().slice(0,2);
+}
+function escH(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+var S = {};
+data.forEach(function(p, pi) {
+  p.items.forEach(function(it, ii) {
+    S[pi+"-"+ii] = { done: it.done, dc: it.done ? (it.dc || todayStr()) : "", note: it.notes || "" };
+  });
+});
+
+function loadState() {
+  try {
+    var saved = JSON.parse(localStorage.getItem(STORE) || "{}");
+    Object.keys(saved).forEach(function(k) {
+      if (S[k]) {
+        S[k].done = saved[k].done;
+        S[k].dc = saved[k].dc;
+        if (saved[k].note !== undefined) S[k].note = saved[k].note;
+      }
+    });
+    var t = localStorage.getItem(STORE + "_time");
+    document.getElementById("lbl-date").textContent = "May 28, 2026" + (t ? " — Saved: " + t : "");
+  } catch(e) {}
+}
+
+function saveState() {
+  try {
+    localStorage.setItem(STORE, JSON.stringify(S));
+    var t = new Date().toLocaleTimeString();
+    localStorage.setItem(STORE + "_time", t);
+    document.getElementById("lbl-date").textContent = "May 28, 2026 — Saved: " + t;
+    var bar = document.getElementById("savebar");
+    bar.textContent = "Saved at " + t;
+    setTimeout(function(){ bar.textContent = ""; }, 3000);
+  } catch(e) {}
+}
+
+function updateProg() {
+  var t = Object.keys(S).length;
+  var d = Object.values(S).filter(function(x){ return x.done; }).length;
+  var pct = t ? Math.round(d/t*100) : 0;
+  document.getElementById("pf").style.width = pct + "%";
+  document.getElementById("pl").textContent = d + " / " + t + " done";
+  data.forEach(function(p, pi) {
+    var tp = p.items.length, dp = 0;
+    p.items.forEach(function(_, ii){ if (S[pi+"-"+ii] && S[pi+"-"+ii].done) dp++; });
+    var el = document.getElementById("cnt-" + pi);
+    if (!el) return;
+    el.textContent = dp + "/" + tp;
+    el.className = "cnt" + (dp === tp ? " all" : dp > 0 ? " some" : "");
+  });
+}
+
+function buildMeta(it, k) {
+  var st = S[k] || { done:false, dc:"", note:"" };
+  var isDone = st.done, dc = st.dc || it.dc || "", da = it.da || "";
+  var days = daysBetween(da, isDone && dc ? dc : null);
+  var m = "";
+  if (it.who) m += "<span class='tag who'>&#128100; " + escH(it.who) + "</span>";
+  if (da) m += "<span class='tag'>Added: " + da + "</span>";
+  if (isDone && dc) m += "<span class='tag dc'>&#10003; Closed: " + dc + "</span>";
+  if (days !== null) m += "<span class='tag " + (isDone ? "dclose" : "dopen") + "'>" + days + " day" + (days !== 1 ? "s" : "") + (isDone ? " to close" : " open") + "</span>";
+  return m;
+}
+
+function renderNote(k) {
+  var el = document.getElementById("note-" + k);
+  if (!el) return;
+  var st = S[k] || { note:"" };
+  el.innerHTML = "";
+  if (st.note) {
+    var nd = document.createElement("div");
+    nd.className = "note-show";
+    nd.textContent = "\uD83D\uDCDD " + st.note;
+    nd.addEventListener("click", (function(k){ return function(){ editNote(k); }; })(k));
+    el.appendChild(nd);
+  } else {
+    var btn = document.createElement("button");
+    btn.className = "add-note";
+    btn.textContent = "+ add note";
+    btn.addEventListener("click", (function(k){ return function(){ editNote(k); }; })(k));
+    el.appendChild(btn);
+  }
+}
+
+function editNote(k) {
+  var el = document.getElementById("note-" + k);
+  if (!el) return;
+  var st = S[k] || { note:"" };
+  el.innerHTML = "";
+  var ta = document.createElement("textarea");
+  ta.className = "note-edit";
+  ta.id = "ta-" + k;
+  ta.placeholder = "Type your note here...";
+  ta.value = st.note || "";
+  el.appendChild(ta);
+  ta.focus();
+  ta.addEventListener("blur", (function(k){ return function(){ saveNote(k); }; })(k));
+  ta.addEventListener("keydown", (function(k){ return function(e){ if (e.key === "Escape") saveNote(k); }; })(k));
+}
+
+function saveNote(k) {
+  var ta = document.getElementById("ta-" + k);
+  if (!ta) return;
+  if (!S[k]) S[k] = { done:false, dc:"", note:"" };
+  S[k].note = ta.value.trim();
+  saveState();
+  renderNote(k);
+}
+
+function toggle(pi, ii) {
+  var k = pi + "-" + ii;
+  var st = S[k];
+  st.done = !st.done;
+  st.dc = st.done ? todayStr() : "";
+  document.getElementById("cb-" + k).className = "cb" + (st.done ? " on" : "");
+  document.getElementById("tx-" + k).className = "it" + (st.done ? " done" : "");
+  document.getElementById("meta-" + k).innerHTML = buildMeta(data[pi].items[ii], k);
+  updateProg();
+  saveState();
+}
+
+function toggleSec(pi) {
+  var el = document.getElementById("sec-" + pi);
+  el.style.display = el.style.display === "none" ? "block" : "none";
+}
+
+function copyText() {
+  var lines = ["PROJECT FOLLOW-UP - " + todayStr(), ""];
+  data.forEach(function(p, pi) {
+    var dp = 0;
+    p.items.forEach(function(_, ii){ if (S[pi+"-"+ii] && S[pi+"-"+ii].done) dp++; });
+    lines.push(p.name.toUpperCase() + "  [" + dp + "/" + p.items.length + "]");
+    lines.push("---------------------------------------------------");
+    p.items.forEach(function(it, ii) {
+      var st = S[pi+"-"+ii] || { done:false, dc:"", note:"" };
+      var line = "  " + (st.done ? "[DONE]  " : "[ ]     ") + it.t;
+      if (it.who) line += "  (" + it.who + ")";
+      if (st.done && st.dc) {
+        var d = daysBetween(it.da, st.dc);
+        line += " | Added: " + (it.da || "?") + " | Closed: " + st.dc + (d !== null ? " (" + d + " days)" : "");
+      } else if (it.da) {
+        var d2 = daysBetween(it.da, null);
+        line += " | Added: " + it.da + (d2 !== null ? " (" + d2 + " days open)" : "");
+      }
+      if (st.note) line += " | NOTE: " + st.note;
+      lines.push(line);
+    });
+    lines.push("");
+  });
+  var txt = lines.join("\n");
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(flash).catch(function(){ fallback(txt); });
+  } else { fallback(txt); }
+}
+
+function fallback(txt) {
+  var ta = document.createElement("textarea");
+  ta.value = txt;
+  ta.style.cssText = "position:fixed;opacity:0;top:0;left:0;width:1px;height:1px";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand("copy"); flash(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function flash() {
+  var b = document.getElementById("copybtn");
+  b.textContent = "Copied!";
+  setTimeout(function(){ b.textContent = "\u2064 Copy as text"; }, 2000);
+}
+
+function resetAll() {
+  if (!confirm("Reset ALL checkboxes and notes?")) return;
+  data.forEach(function(p, pi) {
+    p.items.forEach(function(it, ii) {
+      var k = pi + "-" + ii;
+      S[k] = { done:false, dc:"", note:"" };
+      var cb = document.getElementById("cb-" + k);
+      var tx = document.getElementById("tx-" + k);
+      var m = document.getElementById("meta-" + k);
+      if (cb) cb.className = "cb";
+      if (tx) tx.className = "it";
+      if (m) m.innerHTML = buildMeta(it, k);
+      renderNote(k);
+    });
+  });
+  updateProg();
+  saveState();
+}
+
+var cont = document.getElementById("proj");
+data.forEach(function(p, pi) {
+  var div = document.createElement("div");
+  div.className = "project";
+
+  var header = document.createElement("div");
+  header.className = "ph";
+  header.innerHTML =
+    "<div class='pi'>" + initials(p.name) + "</div>" +
+    "<span class='pname'>" + escH(p.name) + "</span>" +
+    "<span class='cnt' id='cnt-" + pi + "'>0/" + p.items.length + "</span>" +
+    "<span style='font-size:11px;color:#999;margin-left:4px'>&#9660;</span>";
+  header.addEventListener("click", (function(pi){ return function(){ toggleSec(pi); }; })(pi));
+
+  var body = document.createElement("div");
+  body.className = "iw";
+  body.id = "sec-" + pi;
+
+  p.items.forEach(function(it, ii) {
+    var k = pi + "-" + ii;
+    var isDone = S[k] && S[k].done;
+
+    var row = document.createElement("div");
+    row.className = "item";
+
+    var cb = document.createElement("div");
+    cb.className = "cb" + (isDone ? " on" : "");
+    cb.id = "cb-" + k;
+    cb.addEventListener("click", (function(pi,ii){ return function(){ toggle(pi,ii); }; })(pi,ii));
+
+    var ib = document.createElement("div");
+    ib.className = "ib";
+
+    var tx = document.createElement("div");
+    tx.className = "it" + (isDone ? " done" : "");
+    tx.id = "tx-" + k;
+    tx.textContent = it.t;
+    tx.addEventListener("click", (function(pi,ii){ return function(){ toggle(pi,ii); }; })(pi,ii));
+
+    var meta = document.createElement("div");
+    meta.className = "meta";
+    meta.id = "meta-" + k;
+    meta.innerHTML = buildMeta(it, k);
+
+    var noteDiv = document.createElement("div");
+    noteDiv.id = "note-" + k;
+
+    ib.appendChild(tx);
+    ib.appendChild(meta);
+    ib.appendChild(noteDiv);
+    row.appendChild(cb);
+    row.appendChild(ib);
+    body.appendChild(row);
+  });
+
+  div.appendChild(header);
+  div.appendChild(body);
+  cont.appendChild(div);
+
+  p.items.forEach(function(_, ii) { renderNote(pi + "-" + ii); });
+});
+
+loadState();
+data.forEach(function(p, pi) {
+  p.items.forEach(function(_, ii) { renderNote(pi + "-" + ii); });
+});
+updateProg();
+</script>
+</body>
+</html>
