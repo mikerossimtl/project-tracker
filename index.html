@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Follow-up - May 28, 2026</title>
+<title>Project Follow-up - May 29, 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#f5f4f0;padding:20px;color:#1a1a18}
@@ -65,7 +65,7 @@ h1{font-size:20px;font-weight:700;margin-bottom:3px}
   <div class="header">
     <div>
       <h1>&#128203; Project Follow-up</h1>
-      <div class="date" id="lbl-date">May 28, 2026</div>
+      <div class="date" id="lbl-date">May 29, 2026</div>
     </div>
     <div class="prog-row">
       <div class="prog-bar"><div class="prog-fill" id="pf"></div></div>
@@ -81,171 +81,15 @@ h1{font-size:20px;font-weight:700;margin-bottom:3px}
   <div class="savebar" id="savebar"></div>
 </div>
 <script>
-var data = [
-{"name":"Jus Dose","items":[
-  {"t":"Receive missing dumper manual from Dan V.","who":"Dan V.","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Send all manuals to customer","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Prepare combined delivery: Eagle Eye, lexan sheets for top cover, parts for under labeler, stickers for labeler, floor bumper behind bin","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Send a technician to assemble and install parts","who":"Service","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"S ski frame ready (goes under the printers)","who":"","done":false,"da":"2026-05-27","dc":"","notes":""},
-  {"t":"Dumper frame assembly top cover: cover assembled for test at Capmatic, then disassembled for shipment, to be reassembled on site by technician","who":"","done":false,"da":"2026-05-27","dc":"","notes":""},
-  {"t":"Delivery: include Eagle Eye with ski frame and dumper cover","who":"","done":false,"da":"2026-05-27","dc":"","notes":""},
-  {"t":"Add printed manuals to delivery — box to the attention of Sebastien","who":"Sebastien","done":false,"da":"2026-05-27","dc":"","notes":""}
-]},
-{"name":"Idexx","items":[
-  {"t":"Reassemble anodized parts and verify fitting","who":"Manfred","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Dismantle machine — catalog by video/photos","who":"Remi/Laslo","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Crate machine","who":"Nelson","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Get spare parts PO acceptance","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Receive full payment on open invoices","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Ship machine","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Send manual to customer","who":"","done":false,"da":"2026-05-15","dc":"","notes":""}
-]},
-{"name":"Kirker","items":[
-  {"t":"Determine lockdown method for nine removal torque","who":"Dan V.","done":false,"da":"2026-05-15","dc":"","notes":"New gripper successful, produce 2nd one"},
-  {"t":"Advise customer on method and timeline","who":"Mike","done":true,"da":"2026-05-15","dc":"2026-05-21","notes":""},
-  {"t":"New timeline gripper to be fabricated 5 days","who":"Dan V.","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"New timeline test gripper and call FAT approx 1st week of June","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"Dismantle machine","who":"Leslie","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Crate machine","who":"Nelson","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Ship machine","who":"Mike","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Send manual to customer","who":"Doc team","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Seal on the fixed panels","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Silencer cover to adjust","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Labeller electrical","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"More strips for door windows","who":"","done":false,"da":"2026-05-28","dc":"","notes":"Moved from Clutch/Carpe"}
-]},
-{"name":"SC Johnson","items":[
-  {"t":"Await customer payment — shipping fee still open","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Dismantle crate and ship","who":"","done":false,"da":"2026-05-15","dc":"","notes":"Crate Tuesday 26th"},
-  {"t":"Send manual to customer","who":"Doc team","done":false,"da":"2026-05-15","dc":"","notes":""}
-]},
-{"name":"KABS","items":[
-  {"t":"Commissioning ongoing (started May 13)","who":"Manfred","done":false,"da":"2026-05-13","dc":"","notes":""},
-  {"t":"Bambinostar complete — schedule technician visit. Two cabs, assign to Simon.","who":"Simon","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Two cabs, no pedestal feeders required. Progress closed.","who":"","done":true,"da":"2026-05-15","dc":"2026-05-21","notes":""},
-  {"t":"Bambinostar — Simon service to Jus Dose","who":"Simon","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Roboflex and Bandstar 2 weeks electric","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"All change parts still open","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Jean-Simon left with the video jet","who":"Jean-Simon","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Yanbal","items":[
-  {"t":"Receive new round bottle sample from customer (replacing square)","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Frames on the floor","who":"","done":true,"da":"2026-05-15","dc":"2026-05-21","notes":""},
-  {"t":"Both machines in assembly, depucker at kitting","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Accurofil and Alpha in assembly","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Depucker to be done this week","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Euroguard and filling parts missing on the Accurofil","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Alpha: carts","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Clutch / Carpe","items":[
-  {"t":"First Sortstar: complete and ready","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
-  {"t":"Change A3577 to A3103 and update serial number — email sent to Antonio and Rachel","who":"Antonio, Rachel","done":true,"da":"2026-05-19","dc":"2026-05-20","notes":""},
-  {"t":"Sortstar 2 testing complete","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""},
-  {"t":"Doc complete","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""},
-  {"t":"Both machines tested — dial in optimal speed: target 95 BPM (range 80–100 BPM)","who":"Rob F.","done":false,"da":"2026-05-28","dc":"","notes":"Both machines need conveyors in place and outfeed sensor hooked up before Rob F. can dial in speed"},
-  {"t":"Both machines: install conveyors and hook up outfeed sensor","who":"","done":false,"da":"2026-05-28","dc":"","notes":"Required before speed dialing"},
-  {"t":"Machine #2: install missing lexan bin door","who":"Remi","done":false,"da":"2026-05-28","dc":"","notes":""},
-  {"t":"Machine #2: remove all plastic","who":"","done":false,"da":"2026-05-28","dc":"","notes":""},
-  {"t":"Both machines: wipe down","who":"","done":false,"da":"2026-05-28","dc":"","notes":""},
-  {"t":"Second Sortstar: mechanically verified — schedule technician run","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Schedule FAT (possibly video)","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Order crates","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"First machine: remove all wiring to match second machine","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"First machine: fix air switch to match second machine","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"Second machine: remove all show items (inverter, machine drive)","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"Put program in second machine","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"Dress it up","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Call customer to confirm: FAT in person, video, or none","who":"Customer","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"MG America / Ardena","items":[
-  {"t":"Fast Track target: June","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Modify mini fighter plus already in clean room","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Await customer clarification on conveyor length & drawing accuracy","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Schedule pre-kickoff or kickoff (without samples)","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"GOA: complete","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
-  {"t":"Buy the Jolly from Italy — confirmed by Loris","who":"Loris","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Send KC new layout — put Jolly BOM without chuck and bottle clamp","who":"KC","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Take the Mini Fighter Plus from the clean room","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Xeolas","items":[
-  {"t":"Pre-FAT executed on both machines — paperwork signed","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
-  {"t":"FAT ready on CF2P filler","who":"","done":true,"da":"2026-05-15","dc":"2026-05-15","notes":""},
-  {"t":"FAT pending — change parts on Mini Joly","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Await customer decision: attend FAT in Montreal or video","who":"Customer","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Turntable to wire up (electrical)","who":"","done":true,"da":"2026-05-21","dc":"2026-05-21","notes":""},
-  {"t":"Ready and waiting for customer to decide: FAT in person or video","who":"Customer","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Shibuya","items":[
-  {"t":"Machine never arrived from dock","who":"","done":false,"da":"2026-05-26","dc":"","notes":"Still not arrived"},
-  {"t":"No docs received — not electrical either","who":"","done":false,"da":"2026-05-26","dc":"","notes":"No electric, no docs"},
-  {"t":"Screenshots not received","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Electrical and pneumatic drawings not received","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Machine manual not received","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Roche","items":[
-  {"t":"Recheck system — advancing too slowly","who":"","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"Push to accelerate parts production","who":"Dan/Angelo","done":false,"da":"2026-05-21","dc":"","notes":""},
-  {"t":"Loris wants SF1 mods CMP4545","who":"Loris","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Most parts will be outsourced — laser and 2 turntables","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Decide: test scan wear with new or old electrical?","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"New screen received (to JB)","who":"JB","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Buying new electrical box this week","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Electrical not getting to the machine until July","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"More change parts to be issued","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Galenova","items":[
-  {"t":"Line in position on the floor","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Belstar differential missing","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Belstar electrical box to modify","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Labeller minor things to take care of","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"A3270 tight fit","who":"","done":false,"da":"2026-05-15","dc":"","notes":""},
-  {"t":"Electrical to start today on the Cleanstar","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Paul wants to pre-FAT the Sortstar and the Cleanstar","who":"Paul","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Patriot electrical to start in 2-3 weeks","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Mechanical parts need to be removed for electrics to pass (Patriot)","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Full of interference — pneumatics and mechanical (Patriot)","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Asemaq","items":[
-  {"t":"Set up for demo today","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Sensor to install, then B1 B2","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Check if B4 are in the crates","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Sarstedt","items":[
-  {"t":"Marco cap feeder bowl missing","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Feeder bowl does not reach required speed","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Liner done — pedestal feeder reworked and reinstalled","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""}
-]},
-{"name":"Austranna","items":[
-  {"t":"Kitting done — missing 13 pcs","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Resource dependent — no techs yet","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Need visual documentation","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Diamond Health","items":[
-  {"t":"Use A3479 (not A3333) — soldier in front of Dan's office","who":"","done":false,"da":"2026-05-26","dc":"","notes":"Use A3479 only"},
-  {"t":"Backplate is complete","who":"","done":true,"da":"2026-05-26","dc":"2026-05-26","notes":""},
-  {"t":"Missing parts list is 1 year old — needs update","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Purdue","items":[
-  {"t":"To be returned from the show","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Install Scanware from Roche","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"ETA by Declan on return","who":"Declan","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Hatch","items":[
-  {"t":"In design","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]},
-{"name":"Labomar","items":[
-  {"t":"A3504 same as A3523 — Fillab after Labomar cleanup","who":"","done":false,"da":"2026-05-26","dc":"","notes":""},
-  {"t":"Make Fillab after Labomar is cleaned up","who":"","done":false,"da":"2026-05-26","dc":"","notes":""}
-]}
-];
+var data = [{"name": "Jus Dose", "items": [{"t": "Receive missing dumper manual from Dan V.", "who": "Dan V.", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Send all manuals to customer", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Prepare combined delivery: Eagle Eye, lexan sheets for top cover, parts for under labeler, stickers for labeler, floor bumper behind bin", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Send a technician to assemble and install parts", "who": "Service", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "S ski frame ready (goes under the printers)", "who": "", "done": false, "da": "2026-05-27", "dc": "", "notes": ""}, {"t": "Dumper frame assembly top cover: cover assembled for test at Capmatic, then disassembled for shipment, to be reassembled on site by technician", "who": "", "done": false, "da": "2026-05-27", "dc": "", "notes": ""}, {"t": "Delivery: include Eagle Eye with ski frame and dumper cover", "who": "", "done": false, "da": "2026-05-27", "dc": "", "notes": ""}, {"t": "Add printed manuals to delivery \u2014 box to the attention of Sebastien", "who": "Sebastien", "done": false, "da": "2026-05-27", "dc": "", "notes": ""}]}, {"name": "Idexx", "items": [{"t": "Reassemble anodized parts and verify fitting", "who": "Manfred", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Dismantle machine \u2014 catalog by video/photos", "who": "Remi/Laslo", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Crate machine", "who": "Nelson", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Get spare parts PO acceptance", "who": "Customer", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Receive full payment on open invoices", "who": "Customer", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Ship machine", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Send manual to customer", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}]}, {"name": "Kirker", "items": [{"t": "Determine lockdown method for nine removal torque", "who": "Dan V.", "done": false, "da": "2026-05-15", "dc": "", "notes": "New gripper successful, produce 2nd one"}, {"t": "Advise customer on method and timeline", "who": "Mike", "done": true, "da": "2026-05-15", "dc": "2026-05-21", "notes": ""}, {"t": "New timeline gripper to be fabricated 5 days", "who": "Dan V.", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "New timeline test gripper and call FAT approx 1st week of June", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "Dismantle machine", "who": "Leslie", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Crate machine", "who": "Nelson", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Ship machine", "who": "Mike", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Send manual to customer", "who": "Doc team", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Seal on the fixed panels", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Silencer cover to adjust", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Labeller electrical", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "SC Johnson", "items": [{"t": "Await customer payment \u2014 shipping fee still open", "who": "Customer", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Dismantle crate and ship", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": "Crate Tuesday 26th"}, {"t": "Send manual to customer", "who": "Doc team", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}]}, {"name": "KABS", "items": [{"t": "Commissioning ongoing (started May 13)", "who": "Manfred", "done": false, "da": "2026-05-13", "dc": "", "notes": ""}, {"t": "Bambinostar complete \u2014 schedule technician visit. Two cabs, assign to Simon.", "who": "Simon", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Two cabs, no pedestal feeders required. Progress closed.", "who": "", "done": true, "da": "2026-05-15", "dc": "2026-05-21", "notes": ""}, {"t": "Bambinostar \u2014 Simon service to Jus Dose", "who": "Simon", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Roboflex and Bandstar 2 weeks electric", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "All change parts still open", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Jean-Simon left with the video jet", "who": "Jean-Simon", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Yanbal", "items": [{"t": "Receive new round bottle sample from customer (replacing square)", "who": "Customer", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Frames on the floor", "who": "", "done": true, "da": "2026-05-15", "dc": "2026-05-21", "notes": ""}, {"t": "Both machines in assembly, depucker at kitting", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Accurofil and Alpha in assembly", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Depucker to be done this week", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Euroguard and filling parts missing on the Accurofil", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Alpha: carts", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Clutch / Carpe", "items": [{"t": "First Sortstar: complete and ready", "who": "", "done": true, "da": "2026-05-15", "dc": "2026-05-15", "notes": ""}, {"t": "Second Sortstar: mechanically verified \u2014 schedule technician run", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Schedule FAT (possibly video)", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Order crates", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Change A3577 to A3103 and update serial number \u2014 email sent to Antonio and Rachel", "who": "Antonio, Rachel", "done": true, "da": "2026-05-19", "dc": "2026-05-20", "notes": ""}, {"t": "First machine: remove all wiring to match second machine", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "First machine: fix air switch to match second machine", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "Second machine: remove all show items (inverter, machine drive)", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "More strips for door windows", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "Put program in second machine", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "Sortstar 2 testing complete", "who": "", "done": true, "da": "2026-05-26", "dc": "2026-05-26", "notes": ""}, {"t": "Doc complete", "who": "", "done": true, "da": "2026-05-26", "dc": "2026-05-26", "notes": ""}, {"t": "Dress it up", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Customer contacted for FAT \u2014 awaiting date confirmation for next week", "who": "Customer", "done": true, "da": "2026-05-26", "dc": "2026-05-29", "notes": ""}, {"t": "Confirm FAT date with customer (next week)", "who": "Customer", "done": false, "da": "2026-05-29", "dc": "", "notes": "Customer contacted, awaiting their date"}]}, {"name": "MG America / Ardena", "items": [{"t": "Fast Track target: June", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Modify mini fighter plus already in clean room", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Await customer clarification on conveyor length & drawing accuracy", "who": "Customer", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Schedule pre-kickoff or kickoff (without samples)", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "GOA: complete", "who": "", "done": true, "da": "2026-05-15", "dc": "2026-05-15", "notes": ""}, {"t": "Buy the Jolly from Italy \u2014 confirmed by Loris", "who": "Loris", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Send KC new layout \u2014 put Jolly BOM without chuck and bottle clamp", "who": "KC", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Take the Mini Fighter Plus from the clean room", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Xeolas", "items": [{"t": "Pre-FAT executed on both machines \u2014 paperwork signed", "who": "", "done": true, "da": "2026-05-15", "dc": "2026-05-15", "notes": ""}, {"t": "FAT ready on CF2P filler", "who": "", "done": true, "da": "2026-05-15", "dc": "2026-05-15", "notes": ""}, {"t": "FAT pending \u2014 change parts on Mini Joly", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Customer confirmed: Video FAT next week", "who": "Customer", "done": true, "da": "2026-05-15", "dc": "2026-05-29", "notes": ""}, {"t": "Turntable to wire up (electrical)", "who": "", "done": true, "da": "2026-05-21", "dc": "2026-05-21", "notes": ""}, {"t": "Customer confirmed: Video FAT next week", "who": "Customer", "done": true, "da": "2026-05-26", "dc": "2026-05-29", "notes": ""}, {"t": "Confirm exact date for Video FAT (next week) \u2014 discussion today", "who": "Customer", "done": false, "da": "2026-05-29", "dc": "", "notes": "Customer confirmed video FAT next week, date TBD today"}]}, {"name": "Shibuya", "items": [{"t": "Machine never arrived from dock", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": "Still not arrived"}, {"t": "No docs received \u2014 not electrical either", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": "No electric, no docs"}, {"t": "Screenshots not received", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Electrical and pneumatic drawings not received", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Machine manual not received", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Roche", "items": [{"t": "Recheck system \u2014 advancing too slowly", "who": "", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "Push to accelerate parts production", "who": "Dan/Angelo", "done": false, "da": "2026-05-21", "dc": "", "notes": ""}, {"t": "Loris wants SF1 mods CMP4545", "who": "Loris", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Most parts will be outsourced \u2014 laser and 2 turntables", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Decide: test scan wear with new or old electrical?", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "New screen received (to JB)", "who": "JB", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Buying new electrical box this week", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Electrical not getting to the machine until July", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "More change parts to be issued", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Galenova", "items": [{"t": "Line in position on the floor", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Belstar differential missing", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Belstar electrical box to modify", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Labeller minor things to take care of", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "A3270 tight fit", "who": "", "done": false, "da": "2026-05-15", "dc": "", "notes": ""}, {"t": "Electrical to start today on the Cleanstar", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Paul wants to pre-FAT the Sortstar and the Cleanstar", "who": "Paul", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Patriot electrical to start in 2-3 weeks", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Mechanical parts need to be removed for electrics to pass (Patriot)", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Full of interference \u2014 pneumatics and mechanical (Patriot)", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Asemaq", "items": [{"t": "Set up for demo today", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Sensor to install, then B1 B2", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Check if B4 are in the crates", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Sarstedt", "items": [{"t": "Marco cap feeder bowl missing", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Feeder bowl does not reach required speed", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Liner done \u2014 pedestal feeder reworked and reinstalled", "who": "", "done": true, "da": "2026-05-26", "dc": "2026-05-26", "notes": ""}]}, {"name": "Austranna", "items": [{"t": "Kitting done \u2014 missing 13 pcs", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Resource dependent \u2014 no techs yet", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Need visual documentation", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Diamond Health", "items": [{"t": "Use A3479 (not A3333) \u2014 soldier in front of Dan's office", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": "Use A3479 only"}, {"t": "Backplate is complete", "who": "", "done": true, "da": "2026-05-26", "dc": "2026-05-26", "notes": ""}, {"t": "Missing parts list is 1 year old \u2014 needs update", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Purdue", "items": [{"t": "To be returned from the show", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Install Scanware from Roche", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "ETA by Declan on return", "who": "Declan", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Hatch", "items": [{"t": "In design", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}, {"name": "Labomar", "items": [{"t": "A3504 same as A3523 \u2014 Fillab after Labomar cleanup", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}, {"t": "Make Fillab after Labomar is cleaned up", "who": "", "done": false, "da": "2026-05-26", "dc": "", "notes": ""}]}];
 
-var STORE = "pf_v5";
+var STORE = "pf_v4";
 
 function todayStr() {
   var d = new Date();
   return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
 }
+
 function daysBetween(d1, d2) {
   try {
     if (!d1) return null;
@@ -254,9 +98,11 @@ function daysBetween(d1, d2) {
     return n >= 0 ? n : 0;
   } catch(e) { return null; }
 }
+
 function initials(n) {
   return n.split(/[\s\/\-]+/).map(function(w){ return w[0] || ""; }).join("").toUpperCase().slice(0,2);
 }
+
 function escH(s) {
   return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
@@ -279,7 +125,7 @@ function loadState() {
       }
     });
     var t = localStorage.getItem(STORE + "_time");
-    document.getElementById("lbl-date").textContent = "May 28, 2026" + (t ? " — Saved: " + t : "");
+    document.getElementById("lbl-date").textContent = "May 29, 2026" + (t ? " — Saved: " + t : "");
   } catch(e) {}
 }
 
@@ -288,7 +134,7 @@ function saveState() {
     localStorage.setItem(STORE, JSON.stringify(S));
     var t = new Date().toLocaleTimeString();
     localStorage.setItem(STORE + "_time", t);
-    document.getElementById("lbl-date").textContent = "May 28, 2026 — Saved: " + t;
+    document.getElementById("lbl-date").textContent = "May 29, 2026 — Saved: " + t;
     var bar = document.getElementById("savebar");
     bar.textContent = "Saved at " + t;
     setTimeout(function(){ bar.textContent = ""; }, 3000);
@@ -428,7 +274,7 @@ function fallback(txt) {
 function flash() {
   var b = document.getElementById("copybtn");
   b.textContent = "Copied!";
-  setTimeout(function(){ b.textContent = "\u2064 Copy as text"; }, 2000);
+  setTimeout(function(){ b.textContent = "Copy as text"; }, 2000);
 }
 
 function resetAll() {
@@ -517,6 +363,7 @@ data.forEach(function(p, pi) {
   p.items.forEach(function(_, ii) { renderNote(pi + "-" + ii); });
 });
 updateProg();
+
 </script>
 </body>
 </html>
