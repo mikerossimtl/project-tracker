@@ -433,8 +433,8 @@ function switchView(v) {
   if (v==="overview") buildOverview();
 }
 
-function phaseInfo(p) {
-  var open = p.items.filter(function(it,ii){ return !S[data.indexOf(p)+"-"+ii] || !S[data.indexOf(p)+"-"+ii].done; });
+function phaseInfo(p, pi) {
+  var open = p.items.filter(function(it,ii){ return !S[pi+"-"+ii] || !S[pi+"-"+ii].done; });
   var hasShip = open.some(function(t){ return /ship|crate/i.test(t.t); });
   var hasFAT = open.some(function(t){ return /fat/i.test(t.t); });
   var hasAssembly = open.some(function(t){ return /assembl/i.test(t.t); });
@@ -460,7 +460,7 @@ function buildOverview() {
     var done = p.items.filter(function(_,ii){ return S[pi+"-"+ii] && S[pi+"-"+ii].done; }).length;
     var pct = Math.round(done / total * 100);
     var barColor = pct >= 60 ? "#1D9E75" : pct >= 25 ? "#EF9F27" : "#E24B4A";
-    var ph = phaseInfo(p);
+    var ph = phaseInfo(p, pi);
 
     var card = document.createElement("div");
     card.className = "heat-card";
